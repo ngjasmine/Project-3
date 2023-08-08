@@ -1,29 +1,28 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 3: Unveiling the Recipe for Comedy Success: Analyzing Viewer Preferences and Sentiment towards Popular Sitcoms
+# Unveiling the Recipe for Comedy Success: Analyzing Viewer Preferences and Sentiment towards Popular Sitcoms
 
-### **Try Out our B99 vs BBT Classifier Application Streamlit App by clicking the link below.**
-### [Brooklyn's Nine Nine and The Big Bang Theory Classifier and Sentiment Analysis](https://project-3-recipe-for-comedy-success-tj0ysfqfwsi.streamlit.app/)
-
+### **Try Out our Brooklyn Nine Nine vs Big Bang Theory Streamlit App by clicking the link below.**
+### [Brooklyn Nine Nine and The Big Bang Theory Classifier and Sentiment Analysis](https://project-3-recipe-for-comedy-success-tj0ysfqfwsi.streamlit.app/)
+![](streamlit_screenshot_comedy.png)
 <br>
 
-| **Brooklyn's Nine Nine** | **The Big Bang Theory**  |
+| **Brooklyn Nine Nine** | **The Big Bang Theory**  |
 | ------------------------ | -----------------------  |
-| ![Brooklyn's Nine Nine](https://github.com/khammingfatt/Project-3-Quantifying-TV-Laughter/blob/main/B99_Image.jpg?raw=true)| ![The Big Bang Theory](https://github.com/khammingfatt/Project-3-Quantifying-TV-Laughter/blob/main/BBT_Image.jpg?raw=true) |
+| ![](b99_image.jpg)| ![](bbt_image.jpg) |
 
 <br>
 
-## Content Directory:
-### Contents:
-- [Background](#Background)
-- [Data Import & Cleaning](#Data-Import-&-Cleaning)
-- [Feature Engineering](#Feature-Engineering)
-- [Exploratory Data Analysis](#Exploratory-Data-Analysis)
-    - [Sentiment Analysis](#Sentiment-Analysis)
-- [Modeling](#Modeling)
-    - [Fine Tuning of Best Models](#Fine-Tuning-of-Best-Models)
-- [Key Insights & Recommendations](#Key-Insights-&-Recommendations)
-- [Reference](#reference)
-
-<br>
+## Table of Contents
+- [Background](#background)
+- [Notebooks]()
+- [Problem Statement](#problem-statement)
+- [Datasets](#datasets)
+- [Data Exploration](#brief-description-of-our-data-exploration)
+- [Data Dictionary](#data-dictionary)
+- [Modeling](#modeling)
+- [Summary of Model](#summary-of-model)
+- [Key Insights](#key-insights)
+- [Recommendations](#recommendations)
+- [References](#references)
 
 
 ## Background
@@ -35,8 +34,11 @@ Disney+ quickly gained traction after its 2019 launch, amassing 164.2 million su
 
 The competition among these major players reflects the growing demand for on-demand content and the convenience of streaming platforms. As the market evolves, it presents immense opportunities for content creators, production studios, and consumers alike, shaping the future of entertainment consumption.
 
-<br>
 
+## Notebooks
+The code used for this project was organised into 2 notebooks:
+* `1-scraping-reddit-data.ipynb` - code used to scrap data from Reddit
+* `2-unveiling-the-recipe-for-comedy-success.ipynb` - code containing everything else, from data import to model results
 
 ## Problem Statement
 Netflix aims to optimize their limited budget by retaining the most popular and engaging sitcom for their platform. To make an informed decision, they require an efficient machine learning solution that can accurately classify and analyze user comments from various platforms, paricularly two famous sitcom "Big Bang Theory" and "Brooklyn Nine Nine." The goal is to develop an infrastructure that can effectively identify which show the viewers' comments are referring to and analyze the sentiments expressed towards each show. This solution will enable the streaming company to gain valuable insights into viewers' preferences, aiding them in determining the sitcom to retain, maximizing viewer satisfaction and engagement within the budgetary constraints.
@@ -46,16 +48,11 @@ Netflix aims to optimize their limited budget by retaining the most popular and 
 	(2) To build an infrastructure that can help to classify and analyse user's comments about the show from various platforms
 
 
-<br>
-<br>
-
----
 
 ## Datasets:
 * [`bigbangtheory_hot_full.csv`](../data/bigbangtheory_hot_full.csv): this data contains all of the posts scraped from the subreddit 'r/bigbangtheory' with the 'hot' tag
 * [`brooklynninenine_hot_full.csv`](../data/brooklynninenine_hot_full.csv): this data contains all of the posts scraped from the subreddit 'r/brooklynninenine' with the 'hot' tag
 
-<br>
 
 ### Brief Description of Our Data Exploration
 Upon studying the datasets, we found out that these are the most important 10 factors that affects the housing price are given as below. Starting from the most important factor, we have floor area per square feet, max floor level and lease commence date.
@@ -63,15 +60,13 @@ Upon studying the datasets, we found out that these are the most important 10 fa
 ![SHAP Importance of Variables](https://github.com/khammingfatt/Project-3-Quantifying-TV-Laughter/blob/main/SHAP.png?raw=true)
 <br>
 
-We went further and break down the important features to classify the two shows separately and here are the details we get. The more positive the coefficient values, the more likely it is classified to Class 1 - Brooklyn's Nine Nine; On the other hand, the more negative the coefficient values, the more likely it is classified to Class 0 - The Big Bang Theory.
+We went further and break down the important features to classify the two shows separately and here are the details we get. The more positive the coefficient values, the more likely it is classified to Class 1 - Brooklyn Nine Nine; On the other hand, the more negative the coefficient values, the more likely it is classified to Class 0 - The Big Bang Theory.
 
-<br>
 
-| **Brooklyn's Nine Nine** | **The Big Bang Theory**  |
+| **Brooklyn Nine Nine** | **The Big Bang Theory**  |
 | ------------------------ | -----------------------  |
-| ![Brooklyn's Nine Nine](https://github.com/khammingfatt/Project-3-Quantifying-TV-Laughter/blob/main/Feature%20Importance%20B99.png?raw=true)| ![The Big Bang Theory](https://github.com/khammingfatt/Project-3-Quantifying-TV-Laughter/blob/main/Feature%20Importance%20BBT.png?raw=true) |
+| ![](feature_importance_b99.png)| ![](feature_importance_bbt.png) |
 
-<br>
 
 ## Data Dictionary
 | **Feature**         | **Type** | **Dataset**  | **Description**                                                  |
@@ -88,36 +83,26 @@ We went further and break down the important features to classify the two shows 
 | **compound**        | interger | sitcom_df    | Compound sentiment values                                        |
 
 
----
-
-<br>
-<br>
-
 ## Modeling
 
 In the field of Natural Language Processing (NLP), several techniques are employed to process and analyze textual data. These techniques play a crucial role in extracting meaningful information and insights from text documents. In our project, we applied various NLP techniques to preprocess and analyze the data.
 
 **Tokenization** is the first step in NLP, where a text document is divided into smaller units called tokens. These tokens can be words, sentences, or even subwords, depending on the level of granularity required. By breaking down the text into tokens, we gain a better understanding of the underlying structure and can perform further analysis on individual units.
 
-**Stopword removal** is another important step in NLP. Stopwords are common words that do not carry significant meaning in a given context, such as articles (e.g., "a", "an", "the"), pronouns, and prepositions. Removing stopwords helps to reduce noise and focus on the more relevant and informative words in the text.
+**Stopwords removal** is another important step in NLP. Stopwords are common words that do not carry significant meaning in a given context, such as articles (e.g., "a", "an", "the"), pronouns, and prepositions. Removing stopwords helps to reduce noise and focus on the more relevant and informative words in the text.
 
 **Lemmatization** is a technique used to reduce words to their base or dictionary form, known as the lemma. It helps to standardize words by considering their morphological variations, such as different verb tenses or plural forms. By lemmatizing words, we ensure that similar forms of a word are treated as the same, which aids in effective text analysis and understanding.
 
 Upon finished preprocessing the input, we are ready to deploy our data into **Machine Learning**.
 
-<br>
 
-![Model Workflow](https://github.com/khammingfatt/Project-3-Recipe-for-Comedy-Success/blob/main/Modeling%20Workflow.png?raw=true)
+![](modeling_workflow.png)
 
 
 With reference to the workflow above, we used **vectorization techniques**. Vectorization involves transforming text data into numerical representations that machine learning models can process. One common approach is the **Count Vectorisation Model**, where each word in the text is represented as a separate feature, and the frequency or occurrence of each word is captured. Another approach is **Term Frequency-Inverse Document Frequency (TF-IDF)**, which considers not only the frequency of a word in a document but also its importance in the entire corpus.
 
 Upon finished running the model, we ran a total of 17 combinations of models with more than 1,000 hyperparameters tuning by using **GridSearchCV**. Eventually, the Mutilnomial with Naive Bayes + TF-IDF with GridSearchCV turned out to be the best performed model of all and we are deploying the model into our Streamlit Applications.
 
-
-
-<br>
-<br>
 
 ## Summary of Model
 
@@ -128,9 +113,7 @@ Upon finished running the model, we ran a total of 17 combinations of models wit
 | Logistic Regression + TF-IDF + GridSearchCV | 0.97957 | 0.90652 | 0.87368 |  |
 | **(Best Model)**<br>**Multinomial(NB) + TF-IDF + GridSearchCV** | **0.98865** | **0.92063** | **0.87973** |
 
----
 
-<br>
 
 
 
@@ -141,8 +124,8 @@ Upon finished running the model, we ran a total of 17 combinations of models wit
 * Topics that garner significant attention from viewers include their favorite characters and least favorite scenes.
 * Viewers actively discuss sitcom characters in their comments about the shows. 
 
-### Brooklyn's Nine Nine
-* 'Scene' is commonly mentioned in Brooklyn's Nine Nine
+### Brooklyn Nine Nine
+* 'Scene' is commonly mentioned in Brooklyn Nine Nine
 * 'Halloween' and 'Heist' is identified as a very popular topic among reddit users
 * 'Cold Open' is identified as a unique X-factor of B99
 
@@ -153,7 +136,7 @@ Upon finished running the model, we ran a total of 17 combinations of models wit
 
 
 
-## Key Recommendations
+## Recommendations
  
 	(1) Create memorable and likable characters to enhance viewer engagement.
 	(2) Utilize the "Cold Open" narrative technique, which is widely discussed by viewers.
@@ -165,8 +148,8 @@ Upon finished running the model, we ran a total of 17 combinations of models wit
 	(3) To analyse further sentiments, we will no longer limit the number of posts to be even
 
 ---
-## Reference
-(1) The source of data for comments and posts for Brooklyn's Nine Nine <br>
+## References
+(1) The source of data for comments and posts for Brooklyn Nine Nine <br>
 https://www.reddit.com/r/brooklynninenine/
 
 (2) The source of data for comments and posts for The Big Bang Theory <br> https://www.reddit.com/r/bigbangtheory/
